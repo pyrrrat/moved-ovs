@@ -1,3 +1,9 @@
+openvswitch (2.5.90-2) unstable; urgency=medium
+
+  * Increment the build number to account for previous git merge fail.
+
+ -- Monty Taylor <mordred@inaugust.com>  Wed, 02 Mar 2016 11:11:13 -0600
+
 openvswitch (2.5.90-1) unstable; urgency=low
    [ Open vSwitch team ]
    * New upstream version
