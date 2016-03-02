@@ -54,7 +54,7 @@ start_ovsdb () {
 
         set ovsdb-server
 
-        set "$@" --detach $OVN_NB_LOG --remote=punix:$DB_NB_SOCK --remote=ptcp:$DB_NB_PORT --pidfile=$DB_NB_PID
+        set "$@" --detach $OVN_NB_LOG --logfile=$OVN_NB_LOGFILE --remote=punix:$DB_NB_SOCK --remote=ptcp:$DB_NB_PORT --pidfile=$DB_NB_PID
 
         $@ $DB_NB_FILE
     fi
@@ -65,7 +65,7 @@ start_ovsdb () {
 
         set ovsdb-server
 
-        set "$@" --detach $OVN_SB_LOG --remote=punix:$DB_SB_SOCK --remote=ptcp:$DB_SB_PORT --pidfile=$DB_SB_PID
+        set "$@" --detach $OVN_SB_LOG --logfile=$OVN_SB_LOGFILE --remote=punix:$DB_SB_SOCK --remote=ptcp:$DB_SB_PORT --pidfile=$DB_SB_PID
         $@ $DB_SB_FILE
     fi
 }
@@ -184,6 +184,8 @@ set_defaults () {
   OVN_NORTHD_LOG="-vconsole:emer -vsyslog:err -vfile:info"
   OVN_NB_LOG="-vconsole:off"
   OVN_SB_LOG="-vconsole:off"
+  OVN_NB_LOGFILE="$OVS_LOGDIR/ovsdb-server-nb.log"
+  OVN_SB_LOGFILE="$OVS_LOGDIR/ovsdb-server-sb.log"
 }
 
 set_option () {
@@ -240,6 +242,8 @@ File location options:
   --db-nb-port=PORT    OVN Northbound db ptcp port (default: $DB_NB_PORT)
   --db-sb-port=PORT    OVN Southbound db ptcp port (default: $DB_SB_PORT)
   --ovn-dir=FILE       OVN Databases directory (default: $OVN_DIR)
+  --ovn-nb-logfile=FILE OVN Northbound log file (default: $OVS_LOGDIR/ovsdb-server-nb.log)
+  --ovn-sb-logfile=FILE OVN Southbound log file (default: $OVS_LOGDIR/ovsdb-server-sb.log)
 
 Default directories with "configure" option and environment variable override:
   logs: /usr/local/var/log/openvswitch (--with-logdir, OVS_LOGDIR)
