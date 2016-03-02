@@ -54,7 +54,7 @@ start_ovsdb () {
 
         set ovsdb-server
 
-        set "$@" --detach $OVN_NB_LOG --logfile=$OVN_NB_LOGFILE --remote=punix:$DB_NB_SOCK --remote=ptcp:$DB_NB_PORT --pidfile=$DB_NB_PID
+        set "$@" --detach $OVN_NB_LOG --log-file=$OVN_NB_LOGFILE --remote=punix:$DB_NB_SOCK --remote=ptcp:$DB_NB_PORT --pidfile=$DB_NB_PID
 
         $@ $DB_NB_FILE
     fi
@@ -65,7 +65,7 @@ start_ovsdb () {
 
         set ovsdb-server
 
-        set "$@" --detach $OVN_SB_LOG --logfile=$OVN_SB_LOGFILE --remote=punix:$DB_SB_SOCK --remote=ptcp:$DB_SB_PORT --pidfile=$DB_SB_PID
+        set "$@" --detach $OVN_SB_LOG --log-file=$OVN_SB_LOGFILE --remote=punix:$DB_SB_SOCK --remote=ptcp:$DB_SB_PORT --pidfile=$DB_SB_PID
         $@ $DB_SB_FILE
     fi
 }
