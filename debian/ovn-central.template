@@ -2,4 +2,13 @@
 
 # OVN_CTL_OPTS: Extra options to pass to ovs-ctl.  This is, for example,
 # a suitable place to specify --ovn-northd-wrapper=valgrind.
-# OVN_CTL_OPTS=
+OVN_CTL_OPTS=--db-nb-port="6641" \
+    --db-nb-sock="/var/run/openvswitch/nb_db.sock" \
+    --db-nb-pid="/var/run/openvswitch/ovsdb-server-nb.pid" \
+    --db-nb-file="/etc/openvswitch/ovnnb.db" \
+    --ovn-nb-log="-vconsole:off --log-file=/var/log/openvswitch/ovsdb-server-nb.log" \
+    --db-sb-port="6640" \
+    --db-sb-sock="/var/run/openvswitch/sb_db.sock" \
+    --db-sb-pid="/var/run/openvswitch/ovsdb-server-sb.pid" \
+    --db-sb-file="/etc/openvswitch/ovnsb.db" \
+    --ovn-sb-log="-vconsole:off --log-file=/var/log/openvswitch/ovsdb-server-sb.log"
