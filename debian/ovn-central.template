@@ -2,4 +2,14 @@
 
 # OVN_CTL_OPTS: Extra options to pass to ovs-ctl.  This is, for example,
 # a suitable place to specify --ovn-northd-wrapper=valgrind.
-# OVN_CTL_OPTS=
+HOST_IP=${HOST_IP:-0.0.0.0}
+OVN_CTL_OPTS="--db-nb-port=6641:$HOST_IP \
+    --db-nb-sock=/var/run/openvswitch/nb_db.sock \
+    --db-nb-pid=/var/run/openvswitch/ovsdb-server-nb.pid \
+    --db-nb-file=/etc/openvswitch/ovnnb.db \
+    --ovn-nb-logfile=/var/log/openvswitch/ovsdb-server-nb.log \
+    --db-sb-port=6640:$HOST_IP \
+    --db-sb-sock=/var/run/openvswitch/sb_db.sock \
+    --db-sb-pid=/var/run/openvswitch/ovsdb-server-sb.pid \
+    --db-sb-file=/etc/openvswitch/ovnsb.db \
+    --ovn-sb-logfile=/var/log/openvswitch/ovsdb-server-sb.log"
