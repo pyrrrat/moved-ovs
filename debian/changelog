@@ -1,3 +1,9 @@
+openvswitch (2.5.90-2.11813+git77ce7d91) UNRELEASED; urgency=medium
+
+  * CI Build for 77ce7d9
+
+ -- Monty Taylor <mordred@inaugust.com>  Thu, 03 Mar 2016 10:35:01 -0600
+
 openvswitch (2.5.90-2) unstable; urgency=medium
 
   * Increment the build number to account for previous git merge fail.
